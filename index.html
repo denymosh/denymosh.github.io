@@ -5,87 +5,59 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SICAPER</title>
 <meta name="description" content="SICAPER：SI 超级智能 × Caper 探索。一个探索超级智能的实验场。">
-<meta name="theme-color" content="#04070a">
+<meta name="theme-color" content="#05080a">
 <link rel="preload" href="fonts/zendots.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Zen Dots";src:url(fonts/zendots.woff2) format("woff2");font-display:swap}
-:root{--bg:#04070a;--fg:#d9faff;--dim:#5d7f87;--acc:#2ef2ff;--glow:46,242,255;--line:rgba(46,242,255,.10);
---display:"Zen Dots","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+:root{--bg:#05080a;--fg:#c8f7ff;--dim:#4f7a83;--acc:#2ef2ff;--line:rgba(46,242,255,.14);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"PingFang SC","Microsoft YaHei",monospace;
+  --display:"Zen Dots","PingFang SC","Microsoft YaHei",sans-serif}
 *{box-sizing:border-box}
-html,body{margin:0}
-body{min-height:100vh;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;overflow-x:hidden;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--mono);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:40px 40px}
 /* 扫描线 */
-body:after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
-a{color:inherit;text-decoration:none}
-
-/* 背景雷达环 */
-.rings{position:fixed;left:50%;top:56%;width:min(900px,140vw);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;opacity:.55}
-.rings circle{fill:none;stroke:var(--acc)}
-.spin{transform-origin:50% 50%;animation:spin 40s linear infinite}
-.spin2{transform-origin:50% 50%;animation:spin 70s linear infinite reverse}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.w{position:relative;max-width:1180px;margin:0 auto;padding:28px 24px 40px;min-height:100vh;display:flex;flex-direction:column}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,13vw,156px);line-height:.95;margin:0;letter-spacing:.02em;color:#fff;text-align:center;
-  text-shadow:0 0 24px rgba(var(--glow),.5),0 0 2px #fff}
-h1 .si{color:var(--acc);text-shadow:0 0 28px rgba(var(--glow),.9),0 0 2px #fff}
-
-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-family:var(--display);font-size:11px;letter-spacing:.18em;color:var(--acc)}
-nav b{color:var(--dim);font-weight:400;margin-right:6px}
-nav a:hover{text-shadow:0 0 10px rgba(var(--glow),.8)}
-
-.hero{flex:1;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-top:18vh}
-.lead{max-width:520px}
-.lead h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:0 0 14px;color:#fff}
-.lead p{margin:0;color:var(--dim);font-size:14px;line-height:1.8}
-.lead p em{font-style:normal;color:var(--fg)}
-
-.cards{width:min(100%,460px)}
-.card{position:relative;display:block;padding:22px 64px 22px 26px;border:1px solid rgba(var(--glow),.45);border-radius:28px;background:rgba(4,10,14,.6);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 0 22px rgba(var(--glow),.18),inset 0 0 22px rgba(var(--glow),.06);transition:border-color .25s,box-shadow .25s}
-a.card:hover,a.card:focus-visible{border-color:var(--acc);box-shadow:0 0 36px rgba(var(--glow),.45),inset 0 0 26px rgba(var(--glow),.14);outline:none}
-.k{font-family:var(--display);font-size:11px;letter-spacing:.2em;color:var(--acc)}
-.t{font-size:19px;font-weight:600;color:#fff;margin:6px 0 2px}
-.d{font-size:13px;color:var(--dim)}
-.ar{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--acc)}
-.soon{margin-top:12px;opacity:.45;border-style:dashed;box-shadow:none}
-
-footer{margin-top:36px;display:flex;justify-content:space-between;font-family:var(--display);font-size:10px;letter-spacing:.2em;color:var(--dim)}
-
-@media (max-width:640px){nav{justify-content:center}.hero{padding-top:10vh}}
-@media (prefers-reduced-motion:reduce){.spin,.spin2{animation:none}}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px)}
+.w{max-width:880px;margin:0 auto;padding:72px 16px}
+.boot{color:var(--dim);font-size:13px;line-height:1.9}
+.boot b{color:var(--acc);font-weight:400}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,9vw,76px);letter-spacing:.06em;margin:18px 0 6px;color:#fff;text-shadow:0 0 18px rgba(46,242,255,.6)}
+/* 闪烁光标 */
+h1 i{display:inline-block;width:.5em;height:.9em;background:var(--acc);vertical-align:-.08em;margin-left:.1em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.tag{color:var(--dim);font-size:14px;margin-bottom:48px}
+.card{position:relative;display:block;padding:24px 26px;border:1px solid var(--line);background:rgba(5,20,24,.7);color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+/* 四角括号 */
+.card:before,.card:after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--acc)}
+.card:before{top:-2px;left:-2px;border-right:0;border-bottom:0}
+.card:after{bottom:-2px;right:-2px;border-left:0;border-top:0}
+.card:hover,.card:focus-visible{border-color:var(--acc);box-shadow:0 0 24px rgba(46,242,255,.25),inset 0 0 24px rgba(46,242,255,.08);outline:none}
+.id{font-family:var(--display);color:var(--acc);font-size:11px;letter-spacing:.2em}
+.t{font-size:22px;color:#fff;margin:8px 0}
+.d{color:var(--dim);font-size:13px;line-height:1.7}
+.go{position:absolute;right:24px;top:24px;font-family:var(--display);font-size:13px;color:var(--acc)}
+.slot{margin-top:16px;padding:18px 26px;border:1px dashed var(--line);color:var(--dim);font-family:var(--display);font-size:11px;letter-spacing:.2em}
+footer{margin-top:64px;color:var(--dim);font-family:var(--display);font-size:10px;letter-spacing:.2em}
+@media (max-width:640px){
+  .w{padding-top:48px}
+  .go{position:static;display:block;margin-top:14px}
+}
+@media (prefers-reduced-motion:reduce){h1 i{animation:none}}
 </style>
 </head>
 <body>
-<svg class="rings" viewBox="0 0 100 100" aria-hidden="true">
-  <g class="spin"><circle cx="50" cy="50" r="46" stroke-width=".15" stroke-dasharray="2 1.2"/><circle cx="50" cy="50" r="33" stroke-width=".25" stroke-dasharray="30 8 4 8" opacity=".8"/></g>
-  <g class="spin2"><circle cx="50" cy="50" r="40" stroke-width=".1"/><circle cx="50" cy="50" r="22" stroke-width=".4" stroke-dasharray="1 2" opacity=".9"/></g>
-  <circle cx="50" cy="50" r="12" stroke-width=".08"/>
-</svg>
 <div class="w">
-  <h1 aria-label="SICAPER"><span class="si">SI</span>CAPER</h1>
-  <nav>
-    <span><b>[ SI ]</b>SUPER INTELLIGENCE</span>
-    <a href="/ndx100/"><b>[ 01 ]</b>NDX100</a>
-    <span><b>[ CAPER ]</b>EXPLORATION</span>
-  </nav>
-  <main class="hero">
-    <div class="lead">
-      <h2>SUPER INTELLIGENCE,<br>ENDLESS CAPERS.</h2>
-      <p><em>SI</em> 是超级智能，<em>Caper</em> 是探索。<br>这里是一个探索超级智能的实验场。</p>
-    </div>
-    <div class="cards">
-      <a class="card" href="/ndx100/">
-        <div class="k">MODULE 01 · NDX100</div>
-        <div class="t">纳指100 成分股市盈率</div>
-        <div class="d">QQQ 前 33 大持仓 · 滚动 / 前瞻市盈率 · 每月更新</div>
-        <span class="ar" aria-hidden="true">↗</span>
-      </a>
-      <div class="card soon"><div class="k">MODULE 02</div><div class="d">待上线</div></div>
-    </div>
-  </main>
-  <footer><span>SICAPER.NET</span><span>© 2026</span></footer>
+  <div class="boot">&gt; connecting <b>sicaper.net</b> …… ok<br>&gt; modules loaded: <b>1</b></div>
+  <h1 aria-label="SICAPER">SICAPER<i aria-hidden="true"></i></h1>
+  <div class="tag">// SI 超级智能 × Caper 探索 · 一个探索超级智能的实验场</div>
+  <a class="card" href="/ndx100/">
+    <div class="id">MODULE_01 · NDX100</div>
+    <div class="t">纳指100 成分股市盈率</div>
+    <div class="d">QQQ 前 33 大持仓的滚动 / 前瞻市盈率对比 · 每月更新</div>
+    <span class="go">[ ENTER → ]</span>
+  </a>
+  <div class="slot">MODULE_02 · 待上线_</div>
+  <footer>© 2026 SICAPER.NET</footer>
 </div>
 </body>
 </html>
