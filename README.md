@@ -2,7 +2,9 @@
 
 sicaper.net 的导航页。SICAPER = SI（超级智能）+ Caper（探索）。
 
-- `index.html`：导航页，单文件，无构建步骤。
+- `index.html`：导航页，无构建步骤。HAL 之眼、开场升起、点击项目卡后穿过光圈的过场都在这里。
+- `404.html`：全站 404 页，GitHub Pages 会对任何不存在的地址返回它。
+- `style.css`：两个页面共用的样式。
 - `fonts/audiowide.woff2`：标题字体 Audiowide（拉丁字符子集），SIL Open Font License 1.1，许可证见 `fonts/OFL.txt`。中文用系统字体。
 - `CNAME`：自定义域名 `sicaper.net`。
 
