@@ -18,9 +18,6 @@ body{background:var(--bg);color:var(--fg);font-family:var(--mono);
   background-image:linear-gradient(rgba(8,145,178,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(8,145,178,.09) 1px,transparent 1px);background-size:40px 40px}
 /* 左上、右下两团淡青光晕 */
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 420px at 18% -6%,rgba(8,145,178,.14),transparent 70%),radial-gradient(700px 360px at 100% 100%,rgba(8,145,178,.08),transparent 70%)}
-/* 每 9 秒从上到下扫过一次的细扫描线 */
-.sweep{position:fixed;left:0;right:0;top:0;height:2px;pointer-events:none;z-index:5;background:linear-gradient(90deg,transparent,rgba(8,145,178,.55),transparent);box-shadow:0 0 16px 2px rgba(8,145,178,.25);animation:sweep 9s linear infinite}
-@keyframes sweep{from{transform:translateY(-10px)}to{transform:translateY(100vh)}}
 .w{max-width:880px;margin:0 auto;padding:72px 16px}
 .boot{color:var(--dim);font-size:13px;line-height:1.9}
 .boot b{color:var(--acc);font-weight:400}
@@ -45,11 +42,10 @@ footer{margin-top:64px;color:var(--dim);font-family:var(--display);font-size:10p
   .w{padding-top:48px}
   .go{position:static;display:block;margin-top:14px}
 }
-@media (prefers-reduced-motion:reduce){h1 i{animation:none}.sweep{display:none}}
+@media (prefers-reduced-motion:reduce){h1 i{animation:none}}
 </style>
 </head>
 <body>
-<div class="sweep" aria-hidden="true"></div>
 <div class="w">
   <div class="boot">&gt; connecting <b>sicaper.net</b> …… ok<br>&gt; modules loaded: <b>1</b></div>
   <h1 aria-label="SICAPER">SICAPER<i aria-hidden="true"></i></h1>
