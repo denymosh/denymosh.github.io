@@ -6,66 +6,86 @@
 <title>SICAPER</title>
 <meta name="description" content="SICAPER：SI 超级智能 × Caper 探索。一个探索超级智能的实验场。">
 <meta name="theme-color" content="#04070a">
-<link rel="preload" href="/fonts/audiowide.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css">
+<link rel="preload" href="fonts/zendots.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Zen Dots";src:url(fonts/zendots.woff2) format("woff2");font-display:swap}
+:root{--bg:#04070a;--fg:#d9faff;--dim:#5d7f87;--acc:#2ef2ff;--glow:46,242,255;--line:rgba(46,242,255,.10);
+--display:"Zen Dots","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;overflow-x:hidden;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px}
+/* 扫描线 */
+body:after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
+a{color:inherit;text-decoration:none}
+
+/* 背景雷达环 */
+.rings{position:fixed;left:50%;top:56%;width:min(900px,140vw);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;opacity:.55}
+.rings circle{fill:none;stroke:var(--acc)}
+.spin{transform-origin:50% 50%;animation:spin 40s linear infinite}
+.spin2{transform-origin:50% 50%;animation:spin 70s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.w{position:relative;max-width:1180px;margin:0 auto;padding:28px 24px 40px;min-height:100vh;display:flex;flex-direction:column}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,13vw,156px);line-height:.95;margin:0;letter-spacing:.02em;color:#fff;text-align:center;
+  text-shadow:0 0 24px rgba(var(--glow),.5),0 0 2px #fff}
+h1 .si{color:var(--acc);text-shadow:0 0 28px rgba(var(--glow),.9),0 0 2px #fff}
+
+nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-family:var(--display);font-size:11px;letter-spacing:.18em;color:var(--acc)}
+nav b{color:var(--dim);font-weight:400;margin-right:6px}
+nav a:hover{text-shadow:0 0 10px rgba(var(--glow),.8)}
+
+.hero{flex:1;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-top:18vh}
+.lead{max-width:520px}
+.lead h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:0 0 14px;color:#fff}
+.lead p{margin:0;color:var(--dim);font-size:14px;line-height:1.8}
+.lead p em{font-style:normal;color:var(--fg)}
+
+.cards{width:min(100%,460px)}
+.card{position:relative;display:block;padding:22px 64px 22px 26px;border:1px solid rgba(var(--glow),.45);border-radius:28px;background:rgba(4,10,14,.6);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 0 22px rgba(var(--glow),.18),inset 0 0 22px rgba(var(--glow),.06);transition:border-color .25s,box-shadow .25s}
+a.card:hover,a.card:focus-visible{border-color:var(--acc);box-shadow:0 0 36px rgba(var(--glow),.45),inset 0 0 26px rgba(var(--glow),.14);outline:none}
+.k{font-family:var(--display);font-size:11px;letter-spacing:.2em;color:var(--acc)}
+.t{font-size:19px;font-weight:600;color:#fff;margin:6px 0 2px}
+.d{font-size:13px;color:var(--dim)}
+.ar{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--acc)}
+.soon{margin-top:12px;opacity:.45;border-style:dashed;box-shadow:none}
+
+footer{margin-top:36px;display:flex;justify-content:space-between;font-family:var(--display);font-size:10px;letter-spacing:.2em;color:var(--dim)}
+
+@media (max-width:640px){nav{justify-content:center}.hero{padding-top:10vh}}
+@media (prefers-reduced-motion:reduce){.spin,.spin2{animation:none}}
+</style>
 </head>
-<body class="intro">
-<svg class="eye-ring" viewBox="0 0 100 100" aria-hidden="true"><g class="spin"><circle cx="50" cy="50" r="46" stroke-width=".15" stroke-dasharray="2 1.2"/><circle cx="50" cy="50" r="38" stroke-width=".1"/></g></svg>
-<div class="eye" aria-hidden="true"><i class="core"></i></div>
+<body>
+<svg class="rings" viewBox="0 0 100 100" aria-hidden="true">
+  <g class="spin"><circle cx="50" cy="50" r="46" stroke-width=".15" stroke-dasharray="2 1.2"/><circle cx="50" cy="50" r="33" stroke-width=".25" stroke-dasharray="30 8 4 8" opacity=".8"/></g>
+  <g class="spin2"><circle cx="50" cy="50" r="40" stroke-width=".1"/><circle cx="50" cy="50" r="22" stroke-width=".4" stroke-dasharray="1 2" opacity=".9"/></g>
+  <circle cx="50" cy="50" r="12" stroke-width=".08"/>
+</svg>
 <div class="w">
-  <div class="rise"><h1 aria-label="SICAPER"><span class="si">SI</span>CAPER</h1><div class="horizon"></div><div class="flare"></div></div>
-  <nav class="later">
+  <h1 aria-label="SICAPER"><span class="si">SI</span>CAPER</h1>
+  <nav>
     <span><b>[ SI ]</b>SUPER INTELLIGENCE</span>
-    <a class="go-link" href="/ndx100/"><b>[ 01 ]</b>NDX100</a>
+    <a href="/ndx100/"><b>[ 01 ]</b>NDX100</a>
     <span><b>[ CAPER ]</b>EXPLORATION</span>
   </nav>
-  <main class="hero later">
+  <main class="hero">
     <div class="lead">
       <h2>SUPER INTELLIGENCE,<br>ENDLESS CAPERS.</h2>
       <p><em>SI</em> 是超级智能，<em>Caper</em> 是探索。<br>这里是一个探索超级智能的实验场。</p>
     </div>
-    <div class="eye-slot" aria-hidden="true"></div>
     <div class="cards">
-      <a class="card go-link" href="/ndx100/">
+      <a class="card" href="/ndx100/">
         <div class="k">MODULE 01 · NDX100</div>
         <div class="t">纳指100 成分股市盈率</div>
         <div class="d">QQQ 前 33 大持仓 · 滚动 / 前瞻市盈率 · 每月更新</div>
         <span class="ar" aria-hidden="true">↗</span>
       </a>
-      <div class="card soon"><div class="k">MODULE 02 · AWAITING SIGNAL<span class="blink">_</span></div></div>
+      <div class="card soon"><div class="k">MODULE 02</div><div class="d">待上线</div></div>
     </div>
   </main>
-  <footer class="later"><span class="ok">SI-01 · ALL SYSTEMS NOMINAL</span><span>SICAPER.NET · © 2026</span></footer>
+  <footer><span>SICAPER.NET</span><span>© 2026</span></footer>
 </div>
-<div class="gate" aria-hidden="true"><svg viewBox="0 0 100 100"><g style="animation-delay:0.00s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.05s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.10s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.15s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.20s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.25s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.30s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.35s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.40s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.45s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.50s"><circle cx="50" cy="50" r="40"/></g><g style="animation-delay:0.55s"><circle cx="50" cy="50" r="40"/></g></svg></div>
-<div class="whiteout" aria-hidden="true"></div>
-<script>
-(()=>{
-  const eye=document.querySelector('.eye'),ring=document.querySelector('.eye-ring'),slot=document.querySelector('.eye-slot');
-  // 手机上把 HAL 之眼摆到标语和卡片之间的空位
-  function place(){
-    const r=slot.getBoundingClientRect(),y=r.height?r.top+scrollY+r.height/2+'px':'';
-    eye.style.top=ring.style.top=y;
-  }
-  place();addEventListener('resize',place);addEventListener('load',place);document.fonts&&document.fonts.ready.then(place);
-
-  const links=document.querySelectorAll('.go-link');
-  links.forEach(a=>{
-    a.addEventListener('mouseenter',()=>document.body.classList.add('watch'));
-    a.addEventListener('mouseleave',()=>document.body.classList.remove('watch'));
-    a.addEventListener('click',e=>{
-      if(e.metaKey||e.ctrlKey||e.shiftKey||e.button||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-      e.preventDefault();
-      // 光圈以 HAL 之眼为圆心
-      const r=eye.getBoundingClientRect(),g=document.querySelector('.gate');
-      g.style.setProperty('--cx',r.left+r.width/2+'px');g.style.setProperty('--cy',r.top+r.height/2+'px');
-      document.body.classList.add('go');
-      setTimeout(()=>{location.href=a.href},1250);
-    });
-  });
-  // 从纳指页返回时（浏览器往返缓存）恢复原状
-  addEventListener('pageshow',e=>{if(e.persisted)document.body.classList.remove('go','watch')});
-})();
-</script>
 </body>
 </html>
