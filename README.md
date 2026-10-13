@@ -14,4 +14,4 @@ Pages 设为从 `main` 分支根目录发布，推送到 `main` 即上线。
 
 当前模块：
 - `MODULE_01 · 纳指100`：[/ndx100/](https://sicaper.net/ndx100/)，纳指100 成分股市盈率，每月更新。
-- `MODULE_02 · 期权雷达`：`/radar/`，期权开仓雷达。页面需发布在 `sicaper.net/radar/`（例如建一个名为 `radar` 的仓库并开启 Pages），发布之前点这张卡片会是 404。
+- `MODULE_02 · 期权雷达`：[/radar/](https://sicaper.net/radar/)，期权开仓雷达。页面在本仓库 `radar/` 目录，由 celestial-skylab 的 `deploy/radar/publish-page.sh` 生成（不要手改）；数据来自 `api.sicaper.net`（VPS），需访问密码。
