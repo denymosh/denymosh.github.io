@@ -16,3 +16,4 @@ Pages 设为从 `main` 分支根目录发布，推送到 `main` 即上线。
 - `MODULE_01 · 纳指100`：[/ndx100/](https://sicaper.net/ndx100/)，纳指100 成分股市盈率，每月更新。
 - `MODULE_02 · 期权雷达`：[/radar/](https://sicaper.net/radar/)，期权开仓雷达。页面在本仓库 `radar/` 目录，由 celestial-skylab 的 `deploy/radar/publish-page.sh` 生成（不要手改）；数据来自 `api.sicaper.net`（VPS），需访问密码。
 - `MODULE_03 · Dashboard`：[/dashboard/](https://sicaper.net/dashboard/)，主面板（无观察标的）。页面在本仓库 `dashboard/` 目录，同样由 `publish-page.sh` 生成；数据来自 `api.sicaper.net` 上的云端后端（不连 IBKR），持仓与本地双向同步，需访问密码。
+- `MODULE_04 · InsightChain`：[insightchain.vercel.app](https://insightchain.vercel.app/)，赛道 / 分类 / 标的看板，含价格、财报日期、招聘动态。外部链接，部署在 Vercel（源码仓库 [denymosh/insight-valuechain](https://github.com/denymosh/insight-valuechain)），不经过本站路径，也不在本仓库里。
