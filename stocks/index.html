@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>个股投研 · SICAPER</title>
+<meta name="theme-color" content="#f4f8fb">
+<style>
+@font-face{font-family:"Zen Dots";src:url(../fonts/zendots.woff2) format("woff2");font-display:swap}
+:root{--bg:#f4f8fb;--fg:#0b2a35;--dim:#5c7885;--acc:#0a7f99;--ink:#06303a;--line:rgba(8,145,178,.20);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"PingFang SC","Microsoft YaHei",monospace;
+  --display:"Zen Dots","PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--mono);
+  background-image:linear-gradient(rgba(8,145,178,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(8,145,178,.09) 1px,transparent 1px);background-size:40px 40px}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 420px at 18% -6%,rgba(8,145,178,.14),transparent 70%),radial-gradient(700px 360px at 100% 100%,rgba(8,145,178,.08),transparent 70%)}
+.w{max-width:880px;margin:0 auto;padding:56px 16px}
+.back{font-family:var(--display);font-size:11px;letter-spacing:.2em;color:var(--acc);text-decoration:none}
+.back:hover{text-decoration:underline}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,7vw,52px);letter-spacing:.06em;margin:18px 0 6px;color:var(--ink);text-shadow:3px 3px 0 rgba(8,145,178,.22)}
+.tag{color:var(--dim);font-size:14px;margin-bottom:40px}
+.topic{position:relative;padding:24px 26px;border:1px solid rgba(8,145,178,.35);background:rgba(255,255,255,.78);box-shadow:0 10px 30px rgba(8,100,130,.10)}
+.topic+.topic{margin-top:16px}
+.topic:before,.topic:after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--acc)}
+.topic:before{top:-2px;left:-2px;border-right:0;border-bottom:0}
+.topic:after{bottom:-2px;right:-2px;border-left:0;border-top:0}
+.id{font-family:var(--display);color:var(--acc);font-size:11px;letter-spacing:.2em}
+.t{font-size:22px;color:var(--ink);margin:8px 0}
+.d{color:var(--dim);font-size:13px;line-height:1.7}
+.tk{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tk a{display:block;min-width:130px;padding:10px 16px;border:1px solid rgba(8,145,178,.35);background:#fff;color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.tk a:hover,.tk a:focus-visible{border-color:var(--acc);box-shadow:0 6px 18px rgba(8,100,130,.18);outline:none}
+.tk b{display:block;font-family:var(--display);font-weight:400;font-size:16px;color:var(--ink);letter-spacing:.06em}
+.tk span{font-size:12px;color:var(--dim)}
+.msg{color:var(--dim);font-size:13px}
+footer{margin-top:64px;color:var(--dim);font-family:var(--display);font-size:10px;letter-spacing:.2em}
+@media (max-width:640px){.w{padding-top:40px}.tk a{flex:1 1 40%}}
+</style>
+</head>
+<body>
+<div class="w">
+  <a class="back" href="/">&lt; SICAPER</a>
+  <h1>个股投研</h1>
+  <div class="tag">// 按专题整理的个股研究 · 需访问密码</div>
+  <div id="list" class="msg">加载中…</div>
+  <footer>© 2026 SICAPER.NET</footer>
+</div>
+<script>
+(function(){
+  var list=document.getElementById("list");
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+  fetch("topics.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(cfg){
+    list.textContent="";list.className="";
+    cfg.topics.forEach(function(tp,i){
+      var box=el("section","topic");
+      box.appendChild(el("div","id","TOPIC_"+String(i+1).padStart(2,"0")));
+      box.appendChild(el("div","t",tp.name));
+      if(tp.desc)box.appendChild(el("div","d",tp.desc));
+      var row=el("div","tk");
+      tp.tickers.forEach(function(k){
+        var a=el("a");a.href=cfg.base+k.path;
+        a.appendChild(el("b",null,k.symbol));a.appendChild(el("span",null,k.name));
+        row.appendChild(a);
+      });
+      box.appendChild(row);list.appendChild(box);
+    });
+  }).catch(function(){list.textContent="专题列表加载失败。"});
+})();
+</script>
+</body>
+</html>

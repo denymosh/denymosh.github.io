@@ -17,5 +17,5 @@ Pages 设为从 `main` 分支根目录发布，推送到 `main` 即上线。
 - `MODULE_02 · 期权雷达`：[/radar/](https://sicaper.net/radar/)，期权开仓雷达。页面在本仓库 `radar/` 目录，由 celestial-skylab 的 `deploy/radar/publish-page.sh` 生成（不要手改）；数据来自 `api.sicaper.net`（VPS），需访问密码。
 - `MODULE_03 · Dashboard`：[/dashboard/](https://sicaper.net/dashboard/)，主面板（无观察标的）。页面在本仓库 `dashboard/` 目录，同样由 `publish-page.sh` 生成；数据来自 `api.sicaper.net` 上的云端后端（不连 IBKR），持仓与本地双向同步，需访问密码。
 - `MODULE_04 · 赛道`：[/sectors/](https://sicaper.net/sectors/)，Insight ValueChain 的 SICAPER 版（原 Vercel 站 insightchain.vercel.app 保持不变，两边共用同一个 Supabase 数据库）。页面在本仓库 `sectors/` 目录（Next.js 静态导出），由 celestial-skylab 的 `publish-page.sh` 生成；API 在 `api.sicaper.net/ivc`（VPS），查看公开，修改需写入 token。
-- `MODULE_05 · 个股投研`：[/stocks/](https://sicaper.net/stocks/)，个股投研。页面尚未上线，卡片先占位。
+- `MODULE_05 · 个股投研`：[/stocks/](https://sicaper.net/stocks/)，个股投研。入口页在本仓库 `stocks/`（专题与标的列表见 `stocks/topics.json`）；各标的研究页放在 VPS，访问需密码。
 - `.nojekyll`：关闭 Jekyll，否则 GitHub Pages 会丢掉 `sectors/_next/` 这类下划线开头的目录。
