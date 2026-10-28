@@ -1,0 +1,15 @@
+{
+  "base": "https://api.sicaper.net/stocks/",
+  "topics": [
+    {
+      "id": "superintelligence",
+      "name": "超级智能",
+      "desc": "押注超级智能的公司：算力、模型、应用与基础设施",
+      "tickers": [
+        { "symbol": "GOOGL", "name": "Alphabet", "path": "GOOGL/" },
+        { "symbol": "SPCX",  "name": "SpaceX",    "path": "SPCX/" },
+        { "symbol": "META",  "name": "Meta",     "path": "META/" }
+      ]
+    }
+  ]
+}
